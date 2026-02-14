@@ -8,12 +8,12 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
-    show-sql: ${SPRING_JPA_SHOW_SQL:true}
+    show-sql: ${SPRING_JPA_SHOW_SQL:false}
   datasource:
       driver-class-name: org.postgresql.Driver
       username: ${SPRING_DATASOURCE_USERNAME:postgres}
       password: ${SPRING_DATASOURCE_PASSWORD:postgres}
-      url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/autoflex}
+      url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://postgres:5432/autoflex}
       hikari:
         maximum-pool-size: 10
         minimum-idle: 5
