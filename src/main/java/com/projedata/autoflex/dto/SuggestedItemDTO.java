@@ -19,6 +19,6 @@ public record SuggestedItemDTO(
         Double unit_price,
 
         @Schema(description = "Valor total da produção sugerida (quantidade * preço unitário)", example = "500.0")
-        Double total_value
+        String total_value
 ) {
 }

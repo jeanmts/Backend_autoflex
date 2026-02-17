@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/products")
 @RequiredArgsConstructor
 @Tag(name = "Endpoints de Gerenciamento de produtos",  description ="Gerencia os produtos, incluindo criação, atualização, consulta e exclusão. Permite associar produtos às matérias-primas necessárias para sua produção.")

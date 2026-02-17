@@ -8,17 +8,16 @@ import com.projedata.autoflex.entity.RawMaterial;
 import com.projedata.autoflex.repository.ProductRawMaterialRepository;
 import com.projedata.autoflex.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @RequiredArgsConstructor
 @Service
-@Slf4j
 public class ProductionService {
 
     private final ProductRepository productRepository;
@@ -29,7 +28,6 @@ public class ProductionService {
     public List<SuggestedItemDTO> listProduction() {
 
         List<Product> products = productRepository.findAllByOrderByValueDesc();
-
 
         List<SuggestedItemDTO> suggestedItemDTOS = new ArrayList<>();
 
@@ -58,12 +56,14 @@ public class ProductionService {
             if (maxQuantityToProduce > 0 && maxQuantityToProduce != Integer.MAX_VALUE) {
                 double totalValue = product.getValue() * maxQuantityToProduce;
 
+                DecimalFormat df = new DecimalFormat("0.00");
+
                 SuggestedItemDTO dto = SuggestedItemDTO.builder()
                         .code(product.getCode())
                         .product_name(product.getName())
                         .quantity(maxQuantityToProduce)
                         .unit_price(product.getValue())
-                        .total_value(totalValue)
+                        .total_value(df.format(totalValue))
                         .build();
 
                 suggestedItemDTOS.add(dto);
