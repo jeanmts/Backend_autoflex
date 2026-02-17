@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/material")
 @RequiredArgsConstructor
 @Tag(name = "Endpoints de Gerenciamento das matérias-primas", description = "Gerencia as matérias-primas, incluindo criação, atualização, consulta e exclusão. Permite atualizar a quantidade em estoque das matérias-primas.")

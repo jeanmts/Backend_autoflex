@@ -100,6 +100,7 @@ public class ProductService {
     public void deleteProduct(UUID id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(()-> new ProductNotFoundException("O produto informado não foi encontrado!"));
+        productRawMaterialRepository.deleteByIdProduct(id);
         productRepository.deleteById(id);
     }
 }
